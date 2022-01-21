@@ -22,6 +22,8 @@ In this project, you will be given the prototype of the kernel module with a cor
 
 You are strongly encouraged to work in a group of 2 but not to exceed 3. Groups do the same project as individuals. Both members will receive the same grade. Note that working in groups may or may not make the project easier, depending on how the group interactions work out. If collaboration issues arise, contact your instructor as soon as possible: flexibility in dealing with such issues decreases as the deadline approaches.
 
+**We don't answer questions related to the project during lectures to save everyone's time and promote diversity in designs. Please use office hours instead. Thanks for your understanding.**
+
 ## Objective
 
 - Learning UNIX/Linux kernel programming as well as the constraints
@@ -32,7 +34,7 @@ You are strongly encouraged to work in a group of 2 but not to exceed 3. Groups 
 
 ## How to start 
 
-To begin, you need to first form a group and setup the environment for developing your project. You should set up a machine or a virtual machine (highly recommended) using VMWare/VirtualBox (you may obtain the license of VMWare from the CSE department IT/the later is free) with a clean <b> Ubuntu 20.04</b> installation using ISO from https://ubuntu.com/download/desktop. Your virtual machine should at least have 4GB of physical memory and 2 processors. After setting up this virtual machine image, don't forget to install essential packages including make and git. It's your task to figure out how to use VMWare/VirtualBox and Ubuntu Linux commands. Google and stackoverflow are your good friends and if you did not show sufficient amount of efforts in looking for solutions but directly asking for help from teaching support staffs, we have the right to refuse giving an answer to your questions.
+To begin, you need to first form a group and setup the environment for developing your project. You should set up a machine or a virtual machine (highly recommended) using VMWare/VirtualBox (you may obtain the license of VMWare from the CSE department IT/the later is free) with a clean <b> Ubuntu 20.04</b> installation using ISO from https://ubuntu.com/download/desktop. Your virtual machine should at least have 4GB of physical memory and 2 processors. After setting up this virtual machine image, don't forget to install essential packages including make and git. It's your task to figure out how to use VMWare/VirtualBox and Ubuntu Linux commands. **Google and stackoverflow are your good friends and if you did not show sufficient amount of efforts in looking for solutions but directly asking for help from teaching support staffs, we have the right to refuse giving an answer to your questions.**
 
 Then, you need to clean the code from 
 https://github.com/hungweitseng/CS202-MMA.git
