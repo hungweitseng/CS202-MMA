@@ -70,6 +70,8 @@ After succesfully making the files, the benchmark will contain four user program
 
 For each run, the script will output the result of each running program. If you see the program output contains "Diff", it means your result is incorrect. If your matrix output is identical to CPU computation, you will see a "Passed" in the output. The accelerators will also report tasks each performed. You should expect each accelerator performs similar amount of tasks. If not, that's definitely something you need to work on.
 
+*It won't work/pass if you have done nothing*
+
 ## Your tasks
 
 1. Implementing the blockmma kernel module: it needs the following features:
