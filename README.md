@@ -113,6 +113,7 @@ For each run, the script will output the result of each running program. If you 
 
 You only need to (or say you can only) turn in the core.c file from the kernel_module/src. All your modifications should be limited within this file. Exactly 1 member of each group should submit the source code. All group members' names, UCRNetIDs and SIDs should be returned through the blockmma_author function located in core.c.
 
+The due date is 3/3/2022. There won't be any extension and we won't accept late submissions.
 
 ## Reference and hints
 
