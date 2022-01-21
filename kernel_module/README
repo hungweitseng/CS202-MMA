@@ -1,0 +1,13 @@
+
+This directory contains the source code for the kernel module. 
+You may try to "make" with root permission (e.g. "sudo make"). 
+If it success, you will see a "npheap.ko" under this directory. 
+You can then type "make all" using root permission to install the 
+kernel module and the header into system directories. After you are 
+done with this, you can now "insmod npheap.ko" using root. If 
+this success, you can navigate to /dev directory and you should 
+see a "npheap" device under this directory! However, at this 
+point, this device doesn't really do anything. It's now your 
+responsibility to endow this device with some features! You may 
+need to unload the device by using "rmmod npheap" before you want 
+to apply any change to the kernel module.

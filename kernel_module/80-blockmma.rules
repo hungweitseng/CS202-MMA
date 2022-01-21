@@ -1,0 +1,1 @@
+KERNEL=="blockmma", MODE="0666", GROUP="user"
