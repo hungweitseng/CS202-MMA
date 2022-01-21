@@ -20,7 +20,7 @@ Now, the problem is back to you -- how to provide the appropriate system softwar
 
 In this project, you will be given the prototype of the kernel module with a core.c file in its source directory that only contains empty functions. You're only allowed to turn in and modify this file (as you are working in the kernel module team). We also provide a user-space library that allows an application to interact with this kernel module through the ioctl interface as well as a sample benchmark application that you may extend to test if your kernel module functions correctly.
 
-You are strongly encouraged to work in a group of 2. Groups do the same project as individuals. Both members will receive the same grade. Note that working in groups may or may not make the project easier, depending on how the group interactions work out. If collaboration issues arise, contact your instructor as soon as possible: flexibility in dealing with such issues decreases as the deadline approaches.
+You are strongly encouraged to work in a group of 2 but not to exceed 3. Groups do the same project as individuals. Both members will receive the same grade. Note that working in groups may or may not make the project easier, depending on how the group interactions work out. If collaboration issues arise, contact your instructor as soon as possible: flexibility in dealing with such issues decreases as the deadline approaches.
 
 ## Objective
 
