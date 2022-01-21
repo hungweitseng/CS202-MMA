@@ -115,6 +115,9 @@ You only need to (or say you can only) turn in the core.c file from the kernel_m
 
 The due date is 3/3/2022. There won't be any extension and we won't accept late submissions.
 
+You will need to turn in it through eLearn and select your members properly during the submission process.
+https://elearn.ucr.edu/courses/31822/assignments/293869
+
 ## Reference and hints
 
 1. You should try to figure out the interactions between user-space applications (e.g. benchmark) and the user-space library, the user-space library and the kernel module.
