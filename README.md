@@ -76,7 +76,7 @@ For each run, the script will output the result of each running program. If you 
 
 1. Implementing the blockmma kernel module: it needs the following features:
 
-- blockmma_author: **very important** you will need to complete this operation that will show "Your Name" (UCRNetID), SID" in this function. We put your grades based on this. You will receive no credits if we cannot find your names in the output. The ioctl system call will be redirected to blockmma_author function located in src/core.c
+- blockmma_author (**very important**):  you will need to complete this operation that will show "Your Name" (UCRNetID), SID" in this function. We put your grades based on this. You will receive no credits if we cannot find your names in the output. The ioctl system call will be redirected to blockmma_author function located in src/core.c
 
 - blockmma_send_task: you will need to complete this operation that allows a user program to send memory pointers describing three matrices, their sizes and store them appropriately before the task is finished. These blockmma_send_task requests are invoked by the user-space library using BLOCKMMA_IOCTL_SEND_TASK in the ioctl interface. The ioctl system call will be redirected to blockmma_send_task function located in src/ioctl.c. Upon success, the function should return a task id. Otherwise, returns -1.
 
@@ -91,16 +91,16 @@ For each run, the script will output the result of each running program. If you 
 2. Test the developed module: It's your responsibility to test the developed kernel module thoroughly. Our benchmark is just a starting point of your testing. We will generate a different test sequence to test your program when grading. Your module should support an infinite number of user processes and different numbers of accelerators at the b with each container.
 
 3. Grading guidelines: 
-- 40% -- if we are able to compile your kernel module and at least gets your name(s) printed through the output.
-- 20% -- if we are able to compile your kernel module and the benchmark can pass all single process, single accelerator cases with matrix sizes up to 1024. 
-- 20% -- if we are able to compile your kernel module and the benchmark can pass 
+- A: 40% -- if we are able to compile your kernel module and at least gets your name(s) printed through the output.
+- B: 20% -- if you pass A and the benchmark can pass all single process, single accelerator cases with matrix sizes up to 1024. 
+- C: 20% -- if you pass A and B and the benchmark can pass 
   -- all single process, single accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators. 
   -- all single process, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators.
-- 15% -- if we are able to compile your kernel module and the benchmark can pass 
+- D: 15% -- if you pass A and B and C and the benchmark can pass 
   -- all single process, single accelerator cases with matrix sizes up to 2048. 
   -- all single process, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators. 
   -- all multiple processes, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators
-- 5% -- if you satify all above and make all above work if we substitute benchmark with benchmark_bonus.
+- E: 5% -- if you satify all of A, B, C, D and if we substitute benchmark with benchmark_bonus and it still passes A, B, C, D.
 
 ## Deliverables
 
@@ -109,30 +109,25 @@ You only need to (or say you can only) turn in the core.c file from the kernel_m
 
 ## Reference and hints
 
-1. You should try to figure out the interactions between user-space applications (e.g. benchmark) and the user-space library, the user-space library and the kernel module. You should especially understand how to context switch tasks in the user-space that the functionality is defined in pcontainer_init(), handler(), pcontainer_context_switch_handler() from the user-space library. And you also need to know how to wake up/pause tasks by using wake_up_process()/schedule()/set_current_state(), which are kernel-space functions. Here is the explanation of how to control the status of processes in Linux system: https://www.linuxjournal.com/article/8144
+1. You should try to figure out the interactions between user-space applications (e.g. benchmark) and the user-space library, the user-space library and the kernel module.
 
-2. You may need to reference the Linux kernel programming guide and Linux Device Drivers, 3rd Edition since user-space libraries will not be available for kernel code.
+2. Before you start, thinking about the mechanisms within your module in handling requests and data. Through not directly related, reviewing computer architecture content regarding how to handle instructions executing in parallel, especially how modern processors implements "reorder buffers" https://docs.boom-core.org/en/latest/sections/reorder-buffer.html
+and simultaneous multithreading will definitely inspire you!
 
-3. You may find the following kernel library functions useful
+3. You may need to reference the Linux kernel programming guide and Linux Device Drivers, 3rd Edition (https://lwn.net/Kernel/LDD3/) since user-space libraries will not be available for kernel code. 4th edition is not free, but we believe you can find lots of references through Googling.
+
+4. You may find the following kernel library functions useful
 
 - kmalloc/kcalloc/kfree
-
 - mutex_init/mutex_lock/mutex_unlock
-
 - printk
-
-- copy_from_user
-
-- copy_to_user
-
+- copy_from_user/copy_to_user
 - remap_pfn_range
-
 - virt_to_phys
+- rcu_read_lock()/rcu_read_unlock()/synchronize_rcu()/call_rcu()/rcu_assign_pointer()/rcu_dereference()
 
+5. You may need to know these variable
 
-4. You may need to know these variable
-
-- struct task_struct *current;
-
+- struct task_struct * current;
 - gfp_t GFP_KERNEL;
 
