@@ -34,7 +34,7 @@ You are strongly encouraged to work in a group of 2 but not to exceed 3. Groups 
 
 ## How to start 
 
-To begin, you need to first form a group and setup the environment for developing your project. You should set up a machine or a virtual machine (highly recommended) using VMWare/VirtualBox (you may obtain the license of VMWare from the CSE department IT/the later is free) with a clean <b> Ubuntu 20.04</b> installation using ISO from https://ubuntu.com/download/desktop. Your virtual machine should at least have 4GB of physical memory and 2 processors. After setting up this virtual machine image, don't forget to install essential packages including make and git. It's your task to figure out how to use VMWare/VirtualBox and Ubuntu Linux commands. **Google and stackoverflow are your good friends and if you did not show sufficient amount of efforts in looking for solutions but directly asking for help from teaching support staffs, we have the right to refuse giving an answer to your questions.**
+To begin, you need to first form a group and setup the environment for developing your project. You should set up a machine or a virtual machine (highly recommended) using VMWare/VirtualBox (you may obtain the license of VMWare from the CSE department IT/the later is free) with a clean **Ubuntu 20.04** installation using ISO from https://ubuntu.com/download/desktop. Your virtual machine should at least have 4GB of physical memory and 2 processors. After setting up this virtual machine image, don't forget to install essential packages including make and git. It's your task to figure out how to use VMWare/VirtualBox ,Ubuntu Linux commands as well as the skills of accessing, managing github repos. **Google and stackoverflow are your good friends and if you did not show sufficient amount of efforts in looking for solutions but directly asking for help from teaching support staffs, we have the right to refuse giving an answer to your questions.**
 
 Then, you need to clean the code from 
 https://github.com/hungweitseng/CS202-MMA.git
@@ -46,19 +46,24 @@ and make your own private repository. Please do not fork for the given repositor
 
 3. benchmark -- the directory with a sample program using this kernel.
 
-You may now go to the kernel_module directory and type "make" to compile the kernel module and then "sudo make install" to install headers and the module in the right place. You should be able to find a blockmma.ko if your compilation success and this is the binary of the kernel module. 
+You may now go to the kernel_module directory and type "make" to compile the kernel module and then 
+``sudo make install``
+to install headers and the module in the right place. You should be able to find a blockmma.ko if your compilation success and this is the binary of the kernel module. 
 
-However, this kernel module isn't in your kernel yet. To get this kernel module loaded into the system kernel, try "sudo insmod blockmma.ko". Upon success, you should find an "blockmma" device file under /dev directory in your linux system. By default, this device may not be available for non-root users. Therefore, you need to use "sudo chmod 777 /dev/blockmma" command to make it accessible by anyone and any process in the system. 
+However, this kernel module isn't in your kernel yet. To get this kernel module loaded into the system kernel, try 
+``sudo insmod blockmma.ko``.
+Upon success, you should find an "blockmma" device file under /dev directory in your linux system. By default, this device may not be available for non-root users. Therefore, you need to use 
+``sudo chmod 777 /dev/blockmma`` command to make it accessible by anyone and any process in the system. 
 
-If you don't want this device to be available in the system anymore, you can use "sudo rmmod blockmma" to remove this device.
+If you don't want this device to be available in the system anymore, you can use ``sudo rmmod blockmma`` to remove this device.
 
-Now, you can navigate to the library path and again use "make" to generate this dynamic link library. You need to then use "sudo make install" to make this library publicly available for the system. You should read the code and figure out how this library interacts with the kernel module. 
+Now, you can navigate to the library path and again use ``make`` to generate this dynamic link library. You need to then use "sudo make install" to make this library publicly available for the system. You should read the code and figure out how this library interacts with the kernel module. 
 
 No matter you're using VMWare or a real machine, it's always a good practice to control/maintain/backup your work using github.
 
 ## Testing
 
-Finally, you can now go to the benchmark directory to get the benchmark program compiled using ``make'' command and use the script "run.sh" in the benchmark folder to test and validate your implementation. 
+Finally, you can now go to the benchmark directory to get the benchmark program compiled using ``make`` command and use the run.sh script through "source ./run.sh`` in the benchmark folder to test and validate your implementation. You may also extend run.sh for your own testing purpose. (But we're not going to take that in our grading process).
 
 After succesfully making the files, the benchmark will contain four user programs:
 
@@ -96,12 +101,12 @@ For each run, the script will output the result of each running program. If you 
 - A: 40% -- if we are able to compile your kernel module and at least gets your name(s) printed through the output.
 - B: 20% -- if you pass A and the benchmark can pass all single process, single accelerator cases with matrix sizes up to 1024. 
 - C: 20% -- if you pass A and B and the benchmark can pass 
-  -- all single process, single accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators. 
-  -- all single process, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators.
+  - all single process, single accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators. 
+  - all single process, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators.
 - D: 15% -- if you pass A and B and C and the benchmark can pass 
-  -- all single process, single accelerator cases with matrix sizes up to 2048. 
-  -- all single process, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators. 
-  -- all multiple processes, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators
+  - all single process, single accelerator cases with matrix sizes up to 2048. 
+  - all single process, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators. 
+  - all multiple processes, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators
 - E: 5% -- if you satify all of A, B, C, D and if we substitute benchmark with benchmark_bonus and it still passes A, B, C, D.
 
 ## Deliverables
