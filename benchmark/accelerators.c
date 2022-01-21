@@ -69,10 +69,13 @@ int main(int argc, char *argv[])
     int status;
     int cliAddressLength;
     int *children;
+    char *authors;
     struct timeval timeout, origTimeout;
     char echoBuffer[RCVBUFSIZE]; 
+    struct blockmma_hardware_cmd cmd;
     pid_t ppid_before_fork = getpid();
-	int recvSize;
+    int recvSize;
+    int pagesize = sysconf(_SC_PAGE_SIZE);
     num_of_accelerators = atoi(argv[1]);
     devfd = open("/dev/blockmma", O_RDWR);
     if (devfd < 0)
@@ -80,6 +83,12 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Device open failed");
         exit(1);
     }
+    authors = (char *)memalign(pagesize, pagesize);
+    cmd.op = (__u64)0;
+    cmd.a = (__u64)authors;
+    
+    ioctl(devfd, BLOCKMMA_IOCTL_AUTHOR, &cmd);
+    fprintf(stderr, "Authors: %s\n",authors);
     children = (int *)calloc(num_of_accelerators, sizeof(int));
     for(i = 0; i< num_of_accelerators; i++)
     {

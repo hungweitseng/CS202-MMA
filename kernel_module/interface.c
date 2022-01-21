@@ -25,7 +25,7 @@
 //   Author:  Hung-Wei Tseng, Yu-Chia Liu
 //
 //   Description:
-//     The IOCTL interface of CSE202's Block MMA Accelerator Project
+//     User APIs of CSE202's Block MMA Accelerator Project in User Space
 //
 ////////////////////////////////////////////////////////////////////////
 

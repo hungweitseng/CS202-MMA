@@ -95,18 +95,10 @@ int main(int argc, char *argv[])
   memcpy(validate_a, a, ARRAY_SIZE*ARRAY_SIZE*sizeof(float *));
   memcpy(validate_b, b, ARRAY_SIZE*ARRAY_SIZE*sizeof(float *));
   memcpy(validate_c, c, ARRAY_SIZE*ARRAY_SIZE*sizeof(float *));
-  for(i = 0; i < ARRAY_SIZE; i+=128)
-  {
-    for(j = 0; j < ARRAY_SIZE; j+=128)
-    {
-      for(k = 0; k < ARRAY_SIZE; k+=128)
-      {
-        blockmma_f128(devfd, &a[i*ARRAY_SIZE+j], &b[j*ARRAY_SIZE+k], &c[i*ARRAY_SIZE+k], ARRAY_SIZE, ARRAY_SIZE, ARRAY_SIZE, 128);
-      }
-      blockmma_sync(devfd);
-    }
-  }  
+  // Accelerated BLOCKMM
+  blockmma(devfd, a, b, c, ARRAY_SIZE, ARRAY_SIZE, ARRAY_SIZE);
 
+  // CPU BLOCKMM
   blockmm(validate_a, validate_b, validate_c, ARRAY_SIZE, ARRAY_SIZE, ARRAY_SIZE);
   for(i = 0; i < ARRAY_SIZE; i++)
   {

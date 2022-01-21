@@ -31,6 +31,42 @@
 #include "blockmma.h"
 
 // This function submit tasks to the kernel module.
+int blockmma(int devfd, float *a, float *b, float *c, int M, int N, int K)
+{
+  int i, j, k;
+  for(i = 0; i < M; i+=128)
+  {
+    for(j = 0; j < N; j+=128)
+    {
+      for(k = 0; k < K; k+=128)
+      {
+        blockmma_f128(devfd, &a[i*N+j], &b[j*K+k], &c[i*K+k], M, N, K, 128);
+      }
+      blockmma_sync(devfd);
+    }
+  }  
+
+  return 0;
+}
+
+int blockmma_bonus(int devfd, float *a, float *b, float *c, int M, int N, int K)
+{
+  int i, j, k;
+  for(i = 0; i < M; i+=128)
+  {
+    for(j = 0; j < N; j+=128)
+    {
+      for(k = 0; k < K; k+=128)
+      {
+        blockmma_f128(devfd, &a[i*N+j], &b[j*K+k], &c[i*K+k], M, N, K, 128);
+      }
+    }
+  }  
+  blockmma_sync(devfd);
+ 
+  return 0;
+}
+
 int blockmma_f128(int devfd, float *a, float *b, float *c, int m, int n, int k, int tile)
 {
     struct blockmma_cmd cmd;

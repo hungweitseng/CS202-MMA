@@ -44,6 +44,8 @@ extern "C" {
 #include <stdio.h>
 #include <stdlib.h>
 
+int blockmma(int devfd, float *a, float *b, float *c, int m, int n, int k);
+int blockmma_bonus(int devfd, float *a, float *b, float *c, int m, int n, int k);
 int blockmma_f128(int devfd, float *a, float *b, float *c, int m, int n, int k, int tile);
 int blockmma_sync(int devfd);
 int blockmma_f128_accelerator(int devfd);

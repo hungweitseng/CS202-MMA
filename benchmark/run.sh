@@ -1,4 +1,4 @@
-sudo insmod blockmma
+sudo insmod ../kernel_module/blockmma.ko
 sudo chmod 777 /dev/blockmma
 
 # Single accelerator, single process
@@ -35,7 +35,6 @@ sleep 5
 ./benchmark 256 
 ./benchmark 512
 ./benchmark 1024
-./benchmark 2048
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
 
@@ -58,3 +57,5 @@ sleep 5
 ./benchmark 1024
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
+
+sudo rmmod blockmma

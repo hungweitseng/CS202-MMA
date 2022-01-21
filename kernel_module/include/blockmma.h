@@ -56,6 +56,7 @@ struct blockmma_cmd {
     __u64 tile; // # of elements in each Row/col of the matrix tile
 };
 
+#define BLOCKMMA_IOCTL_AUTHOR _IOWR('N', 0x44, struct blockmma_hardware_cmd)
 #define BLOCKMMA_IOCTL_SYNC _IOWR('N', 0x45, struct blockmma_cmd)
 #define BLOCKMMA_IOCTL_SEND_TASK  _IOWR('N', 0x46, struct blockmma_cmd)
 #define BLOCKMMA_IOCTL_GET_TASK  _IOWR('N', 0x47, struct blockmma_hardware_cmd)

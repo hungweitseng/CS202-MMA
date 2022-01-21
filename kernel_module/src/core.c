@@ -43,12 +43,60 @@
 #include <linux/mutex.h>
 #include <linux/sched.h>
 #include <linux/mutex.h>
+#include "core.h"
 
 extern struct miscdevice blockmma_dev;
+/**
+ * Enqueue a task for the caller/accelerator to perform computation.
+ */
+long blockmma_send_task(struct blockmma_cmd __user *user_cmd)
+{
+    return 0;
+}
+
+/**
+ * Return until all outstanding tasks for the calling process are done
+ */
+int blockmma_sync(struct blockmma_cmd __user *user_cmd)
+{
+    return 0;
+}
+
+/**
+ * Return the task id of a task to the caller/accelerator to perform computation.
+ */
+int blockmma_get_task(struct blockmma_hardware_cmd __user *user_cmd)
+{
+    return 0;
+}
+
+
+/**
+ * Return until the task specified in the command is done.
+ */
+int blockmma_comp(struct blockmma_hardware_cmd __user *user_cmd)
+{
+    return 0;
+}
+
+/*
+ * Tell us who wrote the module
+ */
+int blockmma_author(struct blockmma_hardware_cmd __user *user_cmd)
+{
+    struct blockmma_hardware_cmd cmd;
+    char authors[] = "Yu-Chia Liu (yliu719), 987654321 and Hung-Wei Tseng (htseng), 123456789";
+    if (copy_from_user(&cmd, user_cmd, sizeof(cmd)))
+    {
+        return -1;
+    }
+    copy_to_user((void *)cmd.a, (void *)authors, sizeof(authors));
+    return 0;
+}
 
 int blockmma_init(void)
 {
-
+    int ret =0;
     if ((ret = misc_register(&blockmma_dev)))
     {
         printk(KERN_ERR "Unable to register \"blockmma\" misc device\n");
