@@ -94,12 +94,12 @@ For each run, the script will output the result of each running program. If you 
 - 40% -- if we are able to compile your kernel module and at least gets your name(s) printed through the output.
 - 20% -- if we are able to compile your kernel module and the benchmark can pass all single process, single accelerator cases with matrix sizes up to 1024. 
 - 20% -- if we are able to compile your kernel module and the benchmark can pass 
-  -- all single process, single accelerator cases with matrix sizes up to 2048. 
-  -- all single process, multiple accelerator cases with matrix sizes up to 2048. 
+  -- all single process, single accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators. 
+  -- all single process, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators.
 - 15% -- if we are able to compile your kernel module and the benchmark can pass 
   -- all single process, single accelerator cases with matrix sizes up to 2048. 
-  -- all single process, multiple accelerator cases with matrix sizes up to 2048. 
-  -- all multiple processes, multiple accelerator cases with matrix sizes up to 2048.
+  -- all single process, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators. 
+  -- all multiple processes, multiple accelerator cases with matrix sizes up to 2048 and fairly distribute tasks among accelerators
 - 5% -- if you satify all above and make all above work if we substitute benchmark with benchmark_bonus.
 
 ## Deliverables
