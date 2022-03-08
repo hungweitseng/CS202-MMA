@@ -16,7 +16,6 @@ accelerators_control: accelerators_control.c
 
 
 clean:
-	rm -f *.o accelerators accelerators_control benchmark 
-
+	rm -f *.o accelerators accelerators_control benchmark benchmark_bonus
 
 .PHONY: all clean

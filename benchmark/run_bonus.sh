@@ -7,7 +7,7 @@ sudo chmod 777 /dev/blockmma
 # Launch an accelerator
 echo "Part B - 128 (5%)"
 ./accelerators 1 &
-./benchmark 128
+./benchmark_bonus 128
 rc=$?
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
@@ -20,7 +20,7 @@ fi
 
 echo "Part B - 256 (5%)"
 ./accelerators 1 &
-./benchmark 256
+./benchmark_bonus 256
 rc=$?
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
@@ -33,7 +33,7 @@ fi
 
 echo "Part B - 512 (5%)"
 ./accelerators 1 &
-./benchmark 512
+./benchmark_bonus 512
 rc=$?
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
@@ -46,7 +46,7 @@ fi
 
 echo "Part B - 1024 (5%)"
 ./accelerators 1 &
-./benchmark 1024
+./benchmark_bonus 1024
 rc=$?
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
@@ -59,7 +59,7 @@ fi
 
 echo "Part C1 - 2048 (5%)"
 ./accelerators 1 &
-./benchmark 2048
+./benchmark_bonus 2048
 rc=$?
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
@@ -75,7 +75,7 @@ fi
 
 echo "Part C2 - 512 (5%)"
 ./accelerators 4 &
-./benchmark 512
+./benchmark_bonus 512
 rc=$?
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
@@ -88,7 +88,7 @@ fi
 
 echo "Part C2 - 1024 (5%)"
 ./accelerators 4 &
-./benchmark 1024
+./benchmark_bonus 1024
 rc=$?
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
@@ -101,7 +101,7 @@ fi
 
 echo "Part C2 - 2048 (5%)"
 ./accelerators 4 &
-./benchmark 2048
+./benchmark_bonus 2048
 rc=$?
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
@@ -116,19 +116,19 @@ fi
 # Launch an accelerator
 echo "Part D - 256 (5%)"
 ./accelerators 4 &
-./benchmark 256 &
-./benchmark 256 &
-./benchmark 256 &
-./benchmark 256
+./benchmark_bonus 256 &
+./benchmark_bonus 256 &
+./benchmark_bonus 256 &
+./benchmark_bonus 256
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
 
 echo "Part D - up to 2048 (10%)"
 ./accelerators 4 &
-./benchmark 256 &
-./benchmark 512 &
-./benchmark 1024 &
-./benchmark 2048
+./benchmark_bonus 256 &
+./benchmark_bonus 512 &
+./benchmark_bonus 1024 &
+./benchmark_bonus 2048
 ./accelerators_control "0.0.0.0" "q" 27072
 sleep 5
 
