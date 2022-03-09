@@ -62,6 +62,7 @@ int main(int argc, char *argv[])
     int ARRAY_SIZE = 256;
     int pagesize = sysconf(_SC_PAGE_SIZE);
     pid_t ppid_before_fork = getpid();
+    int rc = 0;
     // takes arguments from command line interface.
     devfd = open("/dev/blockmma", O_RDWR);
     if (argc > 1)
@@ -106,14 +107,22 @@ int main(int argc, char *argv[])
     {
       if(c[i*ARRAY_SIZE + j] != validate_c[i*ARRAY_SIZE + j])
       {
-          printf("Incorrect Result: %d, %d, %f %f",i, j, c[i*ARRAY_SIZE + j], validate_c[i*ARRAY_SIZE + j]);
-          exit(1);
+          printf("Incorrect Result: %d, %d, %f %f\n",i, j, c[i*ARRAY_SIZE + j], validate_c[i*ARRAY_SIZE + j]);
+          rc = 1;
+          goto cleanup;
       }
     }
   }
   printf("Passed\n");
-  exit(1);
-    return 0;
+  
+cleanup:
+  free(a);
+  free(b);
+  free(c);
+  free(validate_a);
+  free(validate_b);
+  free(validate_c);
+  return rc;
 }
 
 int blockmm(float *a, float *b, float *c, int M, int N, int K)
